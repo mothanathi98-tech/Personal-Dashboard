@@ -58,6 +58,12 @@ I understand the intended function of these parts, but I may not yet be able to 
 
 AI assistance is a learning aid, not a substitute for understanding or testing the application. I will follow my course requirements and disclose assistance as required by my institution.
 
+## Documentation
+
+- [Setup and deployment](docs/SETUP.md)
+- [Architecture, design decisions and known limitations](docs/ARCHITECTURE.md)
+- [How reminders are queued and delivered](docs/REMINDERS.md)
+
 ## Testing
 
 The repository includes commands for type checking, linting, unit tests, building the application and running browser tests.
@@ -87,8 +93,10 @@ npm run typecheck # Check TypeScript types
 npm run lint      # Run ESLint
 npm test          # Run unit tests
 npm run build     # Build the application
-npm run e2e       # Run Playwright browser tests
+npm run e2e       # Run Playwright browser tests after a successful build
 ```
+
+Playwright's local web server uses `next start`, so run `npm run build` before `npm run e2e` when testing locally. The owner-session test needs `E2E_EMAIL` and `E2E_PASSWORD`; those tests are skipped if the credentials are not set. If Playwright cannot use its bundled browser, set `PW_CHROMIUM_PATH` to an installed Chromium executable.
 
 ## Current status
 
