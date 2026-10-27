@@ -35,7 +35,9 @@ In Supabase Auth > URL configuration, add `<app origin>/auth/callback` to the al
 
 ## 5. Deploy
 
-Create a new GitHub repository and a new Vercel project for this app only. Import the repository, set the app environment variables above, and deploy. Configure the reminder email secrets separately in Supabase if email reminders are required. Run `npm run e2e` against the deployed URL with `E2E_BASE_URL`.
+Use this repository as the source for a dedicated Vercel project for Command Centre. Do not connect it to a Vercel project used by another product. Set the app environment variables above in the Vercel project, then deploy. Configure reminder email secrets separately in Supabase if email reminders are required.
+
+For local browser tests, run `npm run build` before `npm run e2e`. To run the tests against a deployed URL, set `E2E_BASE_URL`. Owner-session tests also need `E2E_EMAIL` and `E2E_PASSWORD`.
 
 ## Account deletion
 
