@@ -14,17 +14,20 @@ Public registration is disabled by a database trigger. The only allowed email is
 2. In Dashboard > Authentication > Users, choose "Add user" and set your email and a strong password.
 3. Set `OWNER_EMAIL` to the same address in the app environment.
 
-## 3. Environment variables
+## 3. Environment variables and secrets
 
 | Name | Where | Purpose |
 | --- | --- | --- |
-| `NEXT_PUBLIC_SUPABASE_URL` | app | project URL |
-| `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | app | publishable key |
-| `OWNER_EMAIL` | app, server only | login allow-list |
-| `SUPABASE_SECRET_KEY` | app, server only | required for account deletion only |
-| `RESEND_API_KEY`, `REMINDER_FROM_EMAIL` | edge function secrets | email reminders |
+| `NEXT_PUBLIC_SUPABASE_URL` | App environment | Supabase project URL; safe to expose as the project endpoint |
+| `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | App environment | Supabase publishable key; database access must still be protected by RLS |
+| `OWNER_EMAIL` | App environment, server-side use | Login allow-list |
+| `SUPABASE_SECRET_KEY` | App environment, server only | Required for account deletion only |
+| `RESEND_API_KEY` | Supabase Edge Function secrets | Sends email reminders through Resend |
+| `REMINDER_FROM_EMAIL` | Supabase Edge Function secrets | Sender address for email reminders |
 
-Enter secrets in the Vercel or Supabase dashboard. Never commit them or paste them into chat. `.env.local` is git-ignored; `.env.example` lists names only.
+The root `.env.example` documents the app environment variables. Reminder email values belong in the Supabase Edge Function environment, not the Next.js app environment. The worker authentication secret is stored in Supabase Vault by the database setup.
+
+Enter real secrets in the relevant Vercel or Supabase settings. Never commit them or paste them into chat. `.env.local` is git-ignored. Do not put secret values in variables prefixed with `NEXT_PUBLIC_`.
 
 ## 4. Auth redirect
 
@@ -32,7 +35,7 @@ In Supabase Auth > URL configuration, add `<app origin>/auth/callback` to the al
 
 ## 5. Deploy
 
-Create a new GitHub repository and a new Vercel project for this app only. Import the repository, set the variables above, deploy. Run `npm run e2e` against the deployed URL with `E2E_BASE_URL`.
+Create a new GitHub repository and a new Vercel project for this app only. Import the repository, set the app environment variables above, and deploy. Configure the reminder email secrets separately in Supabase if email reminders are required. Run `npm run e2e` against the deployed URL with `E2E_BASE_URL`.
 
 ## Account deletion
 
