@@ -36,6 +36,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Install Cloudflare and S3 runtime packages
+        run: npm install --no-save --package-lock=false @opennextjs/cloudflare @aws-sdk/client-s3 @aws-sdk/s3-request-presigner
+
       - name: Check TypeScript
         run: npm run typecheck
 
