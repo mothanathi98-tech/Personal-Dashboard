@@ -4,6 +4,7 @@ export const NAV = [
   { href: "/projects", label: "Projects" },
   { href: "/brainstorm", label: "Brainstorm" },
   { href: "/notes", label: "Notes" },
+  { href: "/files", label: "Files" },
   { href: "/calendar", label: "Calendar" },
   { href: "/meetings", label: "Meetings" },
   { href: "/reviews", label: "Reviews" },
