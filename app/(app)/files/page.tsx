@@ -1,5 +1,4 @@
 import { ListObjectsV2Command } from "@aws-sdk/client-s3";
-import { redirect } from "next/navigation";
 import { PageHeader, Empty } from "@/components/ui";
 import { getCtx } from "@/lib/permissions/owner";
 import { createDownloadUrl, getS3Client, getStorageConfig, MAX_UPLOAD_BYTES } from "@/lib/storage/s3";
@@ -55,7 +54,7 @@ export default async function FilesPage({ searchParams }: { searchParams: Promis
       size: o.Size ?? 0,
       lastModified: o.LastModified,
       downloadUrl: await createDownloadUrl(config.bucket, o.Key),
-      name: o.Metadata?.originalname ?? o.Key.split("/").pop() ?? "File",
+      name: (o.Key.split("/").pop() ?? "File").replace(/^\d+-/, ""),
     })));
   } catch {
     listFailed = true;
