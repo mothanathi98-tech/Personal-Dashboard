@@ -15,5 +15,10 @@
   "observability": {
     "enabled": true
   },
-  "keep_vars": true
+  "keep_vars": true,
+  "vars": {
+    "AWS_REGION": "eu-north-1",
+    "AWS_S3_BUCKET_NAME": "my-files-buckets0-2027",
+    "NEXT_PUBLIC_SUPABASE_URL": "https://rscoevjfiithvpwfumvb.supabase.co"
+  }
 }
