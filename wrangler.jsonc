@@ -19,6 +19,7 @@
   "vars": {
     "AWS_REGION": "eu-north-1",
     "AWS_S3_BUCKET_NAME": "my-files-buckets0-2027",
-    "NEXT_PUBLIC_SUPABASE_URL": "https://rscoevjfiithvpwfumvb.supabase.co"
+    "NEXT_PUBLIC_SUPABASE_URL": "https://rscoevjfiithvpwfumvb.supabase.co",
+    "NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY": "sb_publishable_D0fkeWm37VY8NXCq6sP8Uw_cBuGCqbW"
   }
 }
